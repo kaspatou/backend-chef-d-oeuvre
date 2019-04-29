@@ -13,12 +13,12 @@ INSERT INTO `bd-gestion-materiel`.materiel (id, imei, marque, modele, os, serie,
 INSERT INTO `bd-gestion-materiel`.materiel (id, imei, marque, modele, os, serie, ver_os, id_categorie, id_donnees_materiel) VALUES (7, 1234, 'Apple', 'iPad Air', 'iOS', 'FDD2354', '5', 2, 1);
 INSERT INTO `bd-gestion-materiel`.materiel (id, imei, marque, modele, os, serie, ver_os, id_categorie, id_donnees_materiel) VALUES (8, 1234, 'Apple', 'iMac', 'Mac OS X', 'FR45687', '10.12', 3, 1);
 INSERT INTO `bd-gestion-materiel`.materiel (id, imei, marque, modele, os, serie, ver_os, id_categorie, id_donnees_materiel) VALUES (9, 1233, 'TRENDnet', 'TEW-731BR', 'sans OS', 'DS5467', '1', 4, 1);
-INSERT INTO `bd-gestion-materiel`.role (id, fonction) VALUES (1, 'admin');
-INSERT INTO `bd-gestion-materiel`.role (id, fonction) VALUES (2, 'gestionnaire');
-INSERT INTO `bd-gestion-materiel`.role (id, fonction) VALUES (3, 'emprunteur');
-INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_role) VALUES (1, 'thomas.longueville@laposte.fr', 'PNX025', 'toto', 1);
-INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_role) VALUES (2, 'samuel.sabot@laposte.fr', null, null, 3);
-INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_role) VALUES (3, 'david.pouline@laposte.fr', null, null, 3);
+INSERT INTO `bd-gestion-materiel`.profil (id, fonction) VALUES (1, 'admin');
+INSERT INTO `bd-gestion-materiel`.profil (id, fonction) VALUES (2, 'gestionnaire');
+INSERT INTO `bd-gestion-materiel`.profil (id, fonction) VALUES (3, 'emprunteur');
+INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (1, 'thomas.longueville@laposte.fr', 'PNX025', 'toto', 1);
+INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (2, 'samuel.sabot@laposte.fr', null, null, 3);
+INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (3, 'david.pouline@laposte.fr', null, null, 3);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (1, '2018-04-25', '2018-04-28', '2018-04-28', 1);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (2, '2018-04-26', '2018-04-29', '2018-04-29', 1);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (3, '1972-04-27', '2018-03-29', '2018-05-01', 3);

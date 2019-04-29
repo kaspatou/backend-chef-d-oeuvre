@@ -34,8 +34,8 @@ public class Utilisateur implements Serializable {
 	//bi-directional many-to-one association to Role
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="id_role")
-	private Role role;
+	@JoinColumn(name="id_profil")
+	private Profil profil;
 
 	public Utilisateur() {
 	}
@@ -94,12 +94,12 @@ public class Utilisateur implements Serializable {
 		return pret;
 	}
 
-	public Role getRole() {
-		return this.role;
+	public Profil getProfil() {
+		return this.profil;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setProfil(Profil profil) {
+		this.profil = profil;
 	}
 
 }

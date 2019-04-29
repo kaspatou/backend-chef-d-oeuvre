@@ -1,67 +1,16 @@
 package gestionMateriel.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
-
+import org.springframework.security.core.GrantedAuthority;
 
 /**
- * The persistent class for the role database table.
- * 
+ * User possible roles.
  */
-@Entity
-@NamedQuery(name="Role.findAll", query="SELECT r FROM Role r")
-public class Role implements Serializable {
-	private static final long serialVersionUID = 1L;
+public enum Role implements GrantedAuthority {
 
-	@Id
-	private int id;
+    ROLE_ADMIN, ROLE_CREATOR, ROLE_READER;
 
-	private String fonction;
-
-	//bi-directional many-to-one association to Utilisateur
-	@OneToMany(mappedBy="role")
-	private List<Utilisateur> utilisateurs;
-
-	public Role() {
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFonction() {
-		return this.fonction;
-	}
-
-	public void setFonction(String fonction) {
-		this.fonction = fonction;
-	}
-
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
-	}
-
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
-
-	public Utilisateur addUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().add(utilisateur);
-		utilisateur.setRole(this);
-
-		return utilisateur;
-	}
-
-	public Utilisateur removeUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().remove(utilisateur);
-		utilisateur.setRole(null);
-
-		return utilisateur;
-	}
-
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

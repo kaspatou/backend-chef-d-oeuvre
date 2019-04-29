@@ -27,7 +27,7 @@ import gestionMateriel.repository.CategorieRepository;
 import gestionMateriel.repository.DonneesMaterielRepository;
 import gestionMateriel.repository.MaterielRepository;
 import gestionMateriel.repository.PretRepository;
-import gestionMateriel.repository.RoleRepository;
+import gestionMateriel.repository.ProfilRepository;
 import gestionMateriel.repository.UtilisateurRepository;
 
 @RunWith(SpringRunner.class)
@@ -51,7 +51,7 @@ public class MaterielControllerTest {
 	PretRepository pretRepository;
 	
 	@MockBean
-	RoleRepository roleRepository;
+	ProfilRepository roleRepository;
 	
 	@MockBean
 	UtilisateurRepository utilisateurRepository;

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import gestionMateriel.model.Role;
+import gestionMateriel.model.Profil;
 import gestionMateriel.model.Utilisateur;
 import gestionMateriel.repository.UtilisateurRepository;
 
@@ -67,11 +67,11 @@ public class UtilisateurController {
 	 * @param role
 	 * @return
 	 */
-	@GetMapping("/getbyrole/{role}")
-	public ResponseEntity<?> getUtilisateurByRole(@PathVariable Role role) {
+	@GetMapping("/getbyprofil/{profil}")
+	public ResponseEntity<?> getUtilisateurByRole(@PathVariable Profil role) {
 		Iterable<Utilisateur> utilisateurs = null;
 		try {
-			utilisateurs = utilisateurRepository.findByRole(role);
+			utilisateurs = utilisateurRepository.findByProfil(role);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
