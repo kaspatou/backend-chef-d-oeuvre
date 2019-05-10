@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Utilisateur implements Serializable {
 	private List<Pret> prets;
 
 	//bi-directional many-to-one association to Role
-	@JsonIgnore
+	@JsonIgnoreProperties("utilisateurs")
 	@ManyToOne
 	@JoinColumn(name="id_profil")
 	private Profil profil;

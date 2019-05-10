@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.PreRemove;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,6 +27,7 @@ public class Materiel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private int imei;
@@ -39,7 +44,9 @@ public class Materiel implements Serializable {
 
 	//bi-directional many-to-many association to Pret
 	@JsonIgnore
-	@ManyToMany(mappedBy="materiels")
+	// @ManyToMany(mappedBy="materiels")
+	// @ManyToMany(mappedBy="materiels", cascade= {CascadeType.ALL})
+	@ManyToMany(mappedBy="materiels", fetch = FetchType.LAZY)
 	private List<Pret> prets;
 
 	//bi-directional many-to-one association to Categorie
@@ -70,6 +77,12 @@ public class Materiel implements Serializable {
 		this.verOs = verOs;
 	}
 
+@PreRemove
+private void removeMaterielsFromPret() {
+	for(Pret p : prets) {
+		p.getMateriels().remove(this);
+	}
+}
 
 
 	public int getId() {

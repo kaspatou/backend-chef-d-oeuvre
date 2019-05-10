@@ -33,7 +33,7 @@ public class DonneesMateriel implements Serializable {
 	private String mdpAdministrateur;
 
 	private String mdpUtilisateur;
-	@Column(nullable=true)
+    //@Column(nullable=true)
 	private int pin;
 
 	private String urlConfiguration;
