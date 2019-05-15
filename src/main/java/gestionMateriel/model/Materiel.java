@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,10 +44,15 @@ public class Materiel implements Serializable {
 	private String verOs;
 
 	//bi-directional many-to-many association to Pret
+//	@JsonIgnore
+//	// @ManyToMany(mappedBy="materiels")
+//	// @ManyToMany(mappedBy="materiels", cascade= {CascadeType.ALL})
+//	@ManyToMany(mappedBy="materiels", fetch = FetchType.LAZY)
+//	private List<Pret> prets;
+	
+	//bi-directional many-to-one association to Pret
 	@JsonIgnore
-	// @ManyToMany(mappedBy="materiels")
-	// @ManyToMany(mappedBy="materiels", cascade= {CascadeType.ALL})
-	@ManyToMany(mappedBy="materiels", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="materiels")
 	private List<Pret> prets;
 
 	//bi-directional many-to-one association to Categorie
@@ -64,9 +70,8 @@ public class Materiel implements Serializable {
 	public Materiel() {
 	}
 
-	
-
-	public Materiel(int id, int imei, String marque, String modele, String os, String serie, String verOs) {
+	public Materiel(int id, int imei, String marque, String modele, String os, String serie, String verOs,
+			List<Pret> prets, Categorie categorie, DonneesMateriel donneesMateriel) {
 		super();
 		this.id = id;
 		this.imei = imei;
@@ -75,18 +80,13 @@ public class Materiel implements Serializable {
 		this.os = os;
 		this.serie = serie;
 		this.verOs = verOs;
+		this.prets = prets;
+		this.categorie = categorie;
+		this.donneesMateriel = donneesMateriel;
 	}
-
-@PreRemove
-private void removeMaterielsFromPret() {
-	for(Pret p : prets) {
-		p.getMateriels().remove(this);
-	}
-}
-
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -94,7 +94,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public int getImei() {
-		return this.imei;
+		return imei;
 	}
 
 	public void setImei(int imei) {
@@ -102,7 +102,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public String getMarque() {
-		return this.marque;
+		return marque;
 	}
 
 	public void setMarque(String marque) {
@@ -110,7 +110,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public String getModele() {
-		return this.modele;
+		return modele;
 	}
 
 	public void setModele(String modele) {
@@ -118,7 +118,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public String getOs() {
-		return this.os;
+		return os;
 	}
 
 	public void setOs(String os) {
@@ -126,7 +126,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public String getSerie() {
-		return this.serie;
+		return serie;
 	}
 
 	public void setSerie(String serie) {
@@ -134,7 +134,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public String getVerOs() {
-		return this.verOs;
+		return verOs;
 	}
 
 	public void setVerOs(String verOs) {
@@ -142,7 +142,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public List<Pret> getPrets() {
-		return this.prets;
+		return prets;
 	}
 
 	public void setPrets(List<Pret> prets) {
@@ -150,7 +150,7 @@ private void removeMaterielsFromPret() {
 	}
 
 	public Categorie getCategorie() {
-		return this.categorie;
+		return categorie;
 	}
 
 	public void setCategorie(Categorie categorie) {
@@ -158,11 +158,114 @@ private void removeMaterielsFromPret() {
 	}
 
 	public DonneesMateriel getDonneesMateriel() {
-		return this.donneesMateriel;
+		return donneesMateriel;
 	}
 
 	public void setDonneesMateriel(DonneesMateriel donneesMateriel) {
 		this.donneesMateriel = donneesMateriel;
 	}
+
+	
+
+//	public Materiel(int id, int imei, String marque, String modele, String os, String serie, String verOs) {
+//		super();
+//		this.id = id;
+//		this.imei = imei;
+//		this.marque = marque;
+//		this.modele = modele;
+//		this.os = os;
+//		this.serie = serie;
+//		this.verOs = verOs;
+//	}
+//
+//@PreRemove
+//private void removeMaterielsFromPret() {
+//	for(Pret p : prets) {
+//		p.getMateriels().remove(this);
+//	}
+//}
+//
+//
+//	public int getId() {
+//		return this.id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+//
+//	public int getImei() {
+//		return this.imei;
+//	}
+//
+//	public void setImei(int imei) {
+//		this.imei = imei;
+//	}
+//
+//	public String getMarque() {
+//		return this.marque;
+//	}
+//
+//	public void setMarque(String marque) {
+//		this.marque = marque;
+//	}
+//
+//	public String getModele() {
+//		return this.modele;
+//	}
+//
+//	public void setModele(String modele) {
+//		this.modele = modele;
+//	}
+//
+//	public String getOs() {
+//		return this.os;
+//	}
+//
+//	public void setOs(String os) {
+//		this.os = os;
+//	}
+//
+//	public String getSerie() {
+//		return this.serie;
+//	}
+//
+//	public void setSerie(String serie) {
+//		this.serie = serie;
+//	}
+//
+//	public String getVerOs() {
+//		return this.verOs;
+//	}
+//
+//	public void setVerOs(String verOs) {
+//		this.verOs = verOs;
+//	}
+//
+//	public List<Pret> getPrets() {
+//		return this.prets;
+//	}
+//
+//	public void setPrets(List<Pret> prets) {
+//		this.prets = prets;
+//	}
+//
+//	public Categorie getCategorie() {
+//		return this.categorie;
+//	}
+//
+//	public void setCategorie(Categorie categorie) {
+//		this.categorie = categorie;
+//	}
+//
+//	public DonneesMateriel getDonneesMateriel() {
+//		return this.donneesMateriel;
+//	}
+//
+//	public void setDonneesMateriel(DonneesMateriel donneesMateriel) {
+//		this.donneesMateriel = donneesMateriel;
+//	}
+	
+	
 
 }

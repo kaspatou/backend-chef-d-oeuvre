@@ -19,8 +19,28 @@ INSERT INTO `bd-gestion-materiel`.profil (id, fonction) VALUES (3, 'emprunteur')
 INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (1, 'thomas.longueville@laposte.fr', 'XXX000', 'toto', 1);
 INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (2, 'samuel.sabot@laposte.fr', 'XXX111', null, 3);
 INSERT INTO `bd-gestion-materiel`.utilisateur (id, adresse_mail, identifiant, password, id_profil) VALUES (3, 'david.pouline@laposte.fr', 'XXX333', null, 3);
-INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (1, '2018-04-25', '2018-04-28', '2018-04-28', 1);
-INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (2, '2018-04-26', '2018-04-29', '2018-04-29', 1);
+
+
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (1, '2019-05-13', '2019-05-18', '2019-05-18', 1,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (2, '2019-05-13', '2019-05-16', '2019-05-16', 1,1);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (3, '1972-04-27', '2018-03-29', '2018-05-01', 3,1);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (4, '2018-05-30', '2018-06-24', '2018-06-27', 2,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (5, '2018-04-25', '2018-04-29', '2018-05-30', 1,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (6, '2018-04-25', '2018-04-29', '2018-05-30', 2,4);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (7, '2018-04-25', '2018-04-29', '2018-05-30', 1,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (8, '2018-04-25', '2018-04-29', '2018-05-30', 3,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (9, '2018-04-25', '2018-04-29', '2018-05-30', 1,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (10, '2018-04-25', '2018-04-29', '2018-05-30', 2,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (11, '2018-04-25', '2018-04-29', '2018-05-30', 3,2);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur,id_materiel) VALUES (12, '2018-04-25', '2018-04-30', '2018-05-30', 2,2);
+
+
+
+
+
+/*
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (1, '2019-05-13', '2019-05-18', '2019-05-18', 1);
+INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (2, '2019-05-13', '2019-05-16', '2019-05-16', 1);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (3, '1972-04-27', '2018-03-29', '2018-05-01', 3);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (4, '2018-05-30', '2018-06-24', '2018-06-27', 2);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (5, '2018-04-25', '2018-04-29', '2018-05-30', 1);
@@ -31,8 +51,8 @@ INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_u
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (10, '2018-04-25', '2018-04-29', '2018-05-30', 2);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (11, '2018-04-25', '2018-04-29', '2018-05-30', 3);
 INSERT INTO `bd-gestion-materiel`.prets (id, debut, fin_prevue, fin_reelle, id_utilisateur) VALUES (12, '2018-04-25', '2018-04-30', '2018-05-30', 2);
-
-
+*/
+/*
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (1, 2);
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (2, 1);
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (3, 1);
@@ -45,3 +65,4 @@ INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (9, 2);
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (10, 2);
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (11, 2);
 INSERT INTO `bd-gestion-materiel`.fournit (id_prets, id) VALUES (12, 2);
+*/

@@ -14,9 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -44,32 +47,47 @@ public class Pret implements Serializable {
 
 	//bi-directional many-to-many association to Materiel
 	// @JsonIgnore
-	@ManyToMany( fetch= FetchType.LAZY,
-			cascade = {					
-			CascadeType.MERGE,
-			CascadeType.PERSIST})
-	@JoinTable(
-		name="fournit"
-		, joinColumns={
-			@JoinColumn(name="id_Prets")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id")
-			}
-		)
-	private List<Materiel> materiels;
+//	@ManyToMany( fetch= FetchType.LAZY,
+//			cascade = {					
+//			CascadeType.MERGE,
+//			CascadeType.PERSIST})
+//	@JoinTable(
+//		name="fournit"
+//		, joinColumns={
+//			@JoinColumn(name="id_Prets")
+//			}
+//		, inverseJoinColumns={
+//			@JoinColumn(name="id")
+//			}
+//		)	
+//	private List<Materiel> materiels;
+	
+	@ManyToOne
+	@JoinColumn(name="id_Materiel", nullable = false)
+	private Materiel materiels;
 
 	//bi-directional many-to-one association to Utilisateur
 	// @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_Utilisateur", nullable = false)
 	private Utilisateur utilisateur;
-
+	
 	public Pret() {
+		
+	}
+
+	public Pret(int id, Date debut, Date finPrevue, Date finReelle, Materiel materiels, Utilisateur utilisateur) {
+		super();
+		this.id = id;
+		this.debut = debut;
+		this.finPrevue = finPrevue;
+		this.finReelle = finReelle;
+		this.materiels = materiels;
+		this.utilisateur = utilisateur;
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -77,7 +95,7 @@ public class Pret implements Serializable {
 	}
 
 	public Date getDebut() {
-		return this.debut;
+		return debut;
 	}
 
 	public void setDebut(Date debut) {
@@ -85,7 +103,7 @@ public class Pret implements Serializable {
 	}
 
 	public Date getFinPrevue() {
-		return this.finPrevue;
+		return finPrevue;
 	}
 
 	public void setFinPrevue(Date finPrevue) {
@@ -93,27 +111,80 @@ public class Pret implements Serializable {
 	}
 
 	public Date getFinReelle() {
-		return this.finReelle;
+		return finReelle;
 	}
 
 	public void setFinReelle(Date finReelle) {
 		this.finReelle = finReelle;
 	}
 
-	public List<Materiel> getMateriels() {
-		return this.materiels;
+	public Materiel getMateriels() {
+		return materiels;
 	}
 
-	public void setMateriels(List<Materiel> materiels) {
+	public void setMateriels(Materiel materiels) {
 		this.materiels = materiels;
 	}
 
 	public Utilisateur getUtilisateur() {
-		return this.utilisateur;
+		return utilisateur;
 	}
 
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
+//	public Pret() {
+//	}
+//
+//	public int getId() {
+//		return this.id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
+//
+//	public Date getDebut() {
+//		return this.debut;
+//	}
+//
+//	public void setDebut(Date debut) {
+//		this.debut = debut;
+//	}
+//
+//	public Date getFinPrevue() {
+//		return this.finPrevue;
+//	}
+//
+//	public void setFinPrevue(Date finPrevue) {
+//		this.finPrevue = finPrevue;
+//	}
+//
+//	public Date getFinReelle() {
+//		return this.finReelle;
+//	}
+//
+//	public void setFinReelle(Date finReelle) {
+//		this.finReelle = finReelle;
+//	}
+//
+//	public List<Materiel> getMateriels() {
+//		return this.materiels;
+//	}
+//
+//	public void setMateriels(List<Materiel> materiels) {
+//		this.materiels = materiels;
+//	}
+//
+//	public Utilisateur getUtilisateur() {
+//		return this.utilisateur;
+//	}
+//
+//	public void setUtilisateur(Utilisateur utilisateur) {
+//		this.utilisateur = utilisateur;
+//	}
+	
+	
 
 }

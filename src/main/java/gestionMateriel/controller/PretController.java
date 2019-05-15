@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,14 +38,16 @@ public class PretController {
 	 */
 	
 	@GetMapping("/getall")
-	public ResponseEntity<?> getAllPrets() {
-		List<Pret> listePrets = null;
-		try {
-			listePrets = pretRepository.findAll();
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(listePrets);
+//	public ResponseEntity<?> getAllPrets() {
+//		List<Pret> listePrets = null;
+//		try {
+//			listePrets = pretRepository.findAll();
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//		}
+//		return ResponseEntity.status(HttpStatus.OK).body(listePrets);
+	List<Pret> listePrets(){	
+		return this.pretRepository.findAll();
 	}
 
 	/**
@@ -145,6 +148,7 @@ public class PretController {
 	 * @return
 	 */
 	@GetMapping("/getPretsByMateriel/{materielsId}")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<?> getPretsByMateriel(@PathVariable Integer materielsId) {
 		Iterable <Pret> pretsByMateriel = null;
 		try {
