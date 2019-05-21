@@ -130,7 +130,7 @@ public class PretController {
 	 * @return
 	 */
 	
-	@GetMapping("/getbyutilisateur/{utilisateurId}")
+	@GetMapping("/getpretsbyutilisateur/{utilisateurId}")
 	public ResponseEntity<?> getPretsByUtilisateur(@PathVariable Integer utilisateurId) {
 		Iterable <Pret> pretsByUtilisateur = null;
 		try {
@@ -148,7 +148,7 @@ public class PretController {
 	 * @return
 	 */
 	@GetMapping("/getPretsByMateriel/{materielsId}")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+	// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	public ResponseEntity<?> getPretsByMateriel(@PathVariable Integer materielsId) {
 		Iterable <Pret> pretsByMateriel = null;
 		try {
